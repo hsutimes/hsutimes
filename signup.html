@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Twitter -->
+    <meta name="twitter:site" content="@themepixels">
+    <meta name="twitter:creator" content="@themepixels">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Starlight">
+    <meta name="twitter:description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta name="twitter:image" content="http://themepixels.me/starlight/img/starlight-social.png">
+
+    <!-- Facebook -->
+    <meta property="og:url" content="http://themepixels.me/starlight">
+    <meta property="og:title" content="Starlight">
+    <meta property="og:description" content="Premium Quality and Responsive UI for Dashboard.">
+
+    <meta property="og:image" content="http://themepixels.me/starlight/img/starlight-social.png">
+    <meta property="og:image:secure_url" content="http://themepixels.me/starlight/img/starlight-social.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="600">
+
+    <!-- Meta -->
+    <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta name="author" content="ThemePixels">
+
+    <title>Sign Up</title>
+
+    <!-- vendor css -->
+    <link href="assets/css/font-awesome.css" rel="stylesheet">
+    <link href="assets/css/ionicons.css" rel="stylesheet">
+
+    <!-- Starlight CSS -->
+    <link rel="stylesheet" href="assets/css/starlight.css">
+</head>
+
+<body>
+
+<div class="d-flex align-items-center justify-content-center bg-sl-primary ht-100v">
+
+    <div class="login-wrapper wd-300 wd-xs-350 pd-25 pd-xs-40 bg-white">
+        <div class="signin-logo tx-center tx-24 tx-bold tx-info">Sign Up</div>
+        <div class="tx-center mg-b-60">Professional Admin Template Design</div>
+        <div class="form-group">
+            <input id="name" type="text" class="form-control" placeholder="Enter your username" required>
+        </div>
+        <div class="form-group">
+            <input id="password" type="password" class="form-control" placeholder="Enter your password" required>
+        </div>
+        <div class="form-group">
+            <div class="btn-group">
+                <label class="rdiobox mg-l-10"><input name="role" type="radio" value="游客" checked><span>游客</span></label>
+                <label class="rdiobox mg-l-50"><input name="role" type="radio" value="Boss"><span>Boss</span></label>
+            </div>
+        </div>
+        <button type="submit" id="sign-up" class="btn btn-info btn-block">Sign Up</button>
+        <div class="mg-t-60 tx-center">Have a member? <a href="signin.html" class="tx-info">Sign In</a></div>
+    </div><!-- login-wrapper -->
+</div><!-- d-flex -->
+
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/popper.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#password").focusin(function () {
+            var password = $("#password").val();
+            if (password.length < 8 || password.length > 16) {
+                $("#password").css("border-color", "red");
+            }
+        });
+
+        $("#password").focusout(function () {
+            var password = $("#password").val();
+            if (password.length >= 8 && password.length <= 16) {
+                $("#password").css("border-color", "");
+            } else {
+                $("#password").css("border-color", "red");
+            }
+        });
+
+        $("#sign-up").click(function () {
+            var name, password, role;
+            name = $("#name").val();
+            password = $("#password").val();
+            role = $("[name=role]:checked").val();
+            if (name === '' || password === '' || role === '') {
+                if (name === '') {
+                    $("#name").css("border-color", "red");
+                    $("#name").focus();
+                } else if (password === '') {
+                    $("#name").css("border-color", "");
+                    $("#password").css("border-color", "red");
+                    $("#password").focus();
+                }
+            } else {
+                $.ajax({
+                    type: "post",
+                    url: "api/add_user.php",
+                    data: {
+                        u_name: name,
+                        u_password: password,
+                        u_role: role
+                    },
+                    dataType: "json",
+                    success: function (result) {
+                        if (result.code === 0) {
+                            alert("注册成功");
+                        } else {
+                            alert(result.msg);
+                        }
+                    },
+                    error: function (xhr) {
+                        alert(xhr.status + " | " + xhr.statusText);
+                    }
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>

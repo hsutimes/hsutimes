@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="db_blog@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="db_blog">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="db_pbmset"/>
+    <schema id="4" parent="1" name="db_tasksystem"/>
+    <schema id="5" parent="1" name="information_schema"/>
+    <schema id="6" parent="1" name="mysql"/>
+    <schema id="7" parent="1" name="performance_schema"/>
+    <schema id="8" parent="1" name="qq_words"/>
+    <schema id="9" parent="1" name="sys"/>
+    <schema id="10" parent="1" name="tasktest"/>
+    <schema id="11" parent="1" name="yiibaidb"/>
+    <schema id="12" parent="1" name="db_spider"/>
+    <table id="13" parent="2" name="blog_comment"/>
+    <table id="14" parent="2" name="blog_user"/>
+    <view id="15" parent="2" name="blogcomment">
+      <Comment>VIEW</Comment>
+    </view>
+    <routine id="16" parent="2" name="addUser">
+      <RoutineKind>procedure</RoutineKind>
+    </routine>
+    <routine id="17" parent="2" name="deleteUserById">
+      <RoutineKind>procedure</RoutineKind>
+    </routine>
+    <routine id="18" parent="2" name="getUserByName">
+      <RoutineKind>procedure</RoutineKind>
+    </routine>
+    <routine id="19" parent="2" name="isExistUser">
+      <RoutineKind>function</RoutineKind>
+    </routine>
+    <routine id="20" parent="2" name="getUser">
+      <RoutineKind>procedure</RoutineKind>
+    </routine>
+    <routine id="21" parent="2" name="updateUserPasswordByName">
+      <RoutineKind>procedure</RoutineKind>
+    </routine>
+    <routine id="22" parent="2" name="updateUserById">
+      <RoutineKind>procedure</RoutineKind>
+    </routine>
+    <routine id="23" parent="2" name="loginValidate">
+      <RoutineKind>procedure</RoutineKind>
+    </routine>
+    <routine id="24" parent="2" name="getComment">
+      <RoutineKind>procedure</RoutineKind>
+    </routine>
+    <routine id="25" parent="2" name="addComment">
+      <RoutineKind>procedure</RoutineKind>
+    </routine>
+    <routine id="26" parent="2" name="getCommentByDate">
+      <RoutineKind>procedure</RoutineKind>
+    </routine>
+    <routine id="27" parent="2" name="getCommentByName">
+      <RoutineKind>procedure</RoutineKind>
+    </routine>
+    <routine id="28" parent="2" name="getCommentBySex">
+      <RoutineKind>procedure</RoutineKind>
+    </routine>
+    <routine id="29" parent="2" name="getCommentsLimitNum">
+      <RoutineKind>procedure</RoutineKind>
+    </routine>
+    <routine id="30" parent="2" name="getUserNum">
+      <RoutineKind>function</RoutineKind>
+    </routine>
+    <routine id="31" parent="2" name="getCommentNum">
+      <RoutineKind>function</RoutineKind>
+    </routine>
+    <column id="32" parent="13" name="c_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="33" parent="13" name="c_info">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="34" parent="13" name="c_user_id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="35" parent="13" name="c_date">
+      <Position>4</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <key id="36" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>c_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="37" parent="14" name="u_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="38" parent="14" name="u_name">
+      <Position>2</Position>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <column id="39" parent="14" name="u_password">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="40" parent="14" name="u_sex">
+      <Position>4</Position>
+      <DataType>varchar(2)|0</DataType>
+    </column>
+    <column id="41" parent="14" name="u_role">
+      <Position>5</Position>
+      <DataType>varchar(10)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="42" parent="14" name="u_date">
+      <Position>6</Position>
+      <DataType>datetime|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="43" parent="14" name="u_email">
+      <Position>7</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <key id="44" parent="14" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>u_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="45" parent="15" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="46" parent="15" name="info">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="47" parent="15" name="name">
+      <Position>3</Position>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <column id="48" parent="15" name="sex">
+      <Position>4</Position>
+      <DataType>varchar(2)|0</DataType>
+    </column>
+    <column id="49" parent="15" name="role">
+      <Position>5</Position>
+      <DataType>varchar(10)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="50" parent="15" name="email">
+      <Position>6</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="51" parent="15" name="date">
+      <Position>7</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <argument id="52" parent="16" name="name">
+      <DataType>varchar(10)|0</DataType>
+    </argument>
+    <argument id="53" parent="16" name="password">
+      <DataType>varchar(20)|0</DataType>
+    </argument>
+    <argument id="54" parent="16" name="role">
+      <DataType>varchar(10)|0</DataType>
+    </argument>
+    <argument id="55" parent="17" name="id">
+      <DataType>int(11)|0</DataType>
+    </argument>
+    <argument id="56" parent="18" name="name">
+      <DataType>varchar(10)|0</DataType>
+    </argument>
+    <argument id="57" parent="19">
+      <ArgumentDirection>R</ArgumentDirection>
+      <DataType>varchar(5)|0</DataType>
+    </argument>
+    <argument id="58" parent="19" name="name">
+      <DataType>varchar(10)|0</DataType>
+    </argument>
+    <argument id="59" parent="21" name="name">
+      <DataType>varchar(10)|0</DataType>
+    </argument>
+    <argument id="60" parent="21" name="password">
+      <DataType>varchar(20)|0</DataType>
+    </argument>
+    <argument id="61" parent="22" name="id">
+      <DataType>int(11)|0</DataType>
+    </argument>
+    <argument id="62" parent="22" name="name">
+      <DataType>varchar(10)|0</DataType>
+    </argument>
+    <argument id="63" parent="22" name="sex">
+      <DataType>varchar(2)|0</DataType>
+    </argument>
+    <argument id="64" parent="22" name="email">
+      <DataType>varchar(20)|0</DataType>
+    </argument>
+    <argument id="65" parent="23" name="name">
+      <DataType>varchar(10)|0</DataType>
+    </argument>
+    <argument id="66" parent="25" name="info">
+      <DataType>varchar(255)|0</DataType>
+    </argument>
+    <argument id="67" parent="25" name="user_id">
+      <DataType>int(11)|0</DataType>
+    </argument>
+    <argument id="68" parent="26" name="year">
+      <DataType>varchar(5)|0</DataType>
+    </argument>
+    <argument id="69" parent="26" name="month">
+      <DataType>varchar(5)|0</DataType>
+    </argument>
+    <argument id="70" parent="26" name="day">
+      <DataType>varchar(5)|0</DataType>
+    </argument>
+    <argument id="71" parent="27" name="c_name">
+      <DataType>varchar(10)|0</DataType>
+    </argument>
+    <argument id="72" parent="28" name="c_sex">
+      <DataType>varchar(2)|0</DataType>
+    </argument>
+    <argument id="73" parent="29" name="l">
+      <DataType>int(11)|0</DataType>
+    </argument>
+    <argument id="74" parent="30">
+      <ArgumentDirection>R</ArgumentDirection>
+      <DataType>int(11)|0</DataType>
+    </argument>
+    <argument id="75" parent="31">
+      <ArgumentDirection>R</ArgumentDirection>
+      <DataType>int(11)|0</DataType>
+    </argument>
+  </database-model>
+</dataSource>

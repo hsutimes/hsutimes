@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Twitter -->
+    <meta name="twitter:site" content="@themepixels">
+    <meta name="twitter:creator" content="@themepixels">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Starlight">
+    <meta name="twitter:description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta name="twitter:image" content="http://themepixels.me/starlight/img/starlight-social.png">
+
+    <!-- Facebook -->
+    <meta property="og:url" content="http://themepixels.me/starlight">
+    <meta property="og:title" content="Starlight">
+    <meta property="og:description" content="Premium Quality and Responsive UI for Dashboard.">
+
+    <meta property="og:image" content="http://themepixels.me/starlight/img/starlight-social.png">
+    <meta property="og:image:secure_url" content="http://themepixels.me/starlight/img/starlight-social.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="600">
+
+    <!-- Meta -->
+    <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
+    <meta name="author" content="ThemePixels">
+
+    <!-- vendor css -->
+    <link href="assets/css/font-awesome.css" rel="stylesheet">
+    <link href="assets/css/ionicons.css" rel="stylesheet">
+    <link href="assets/css/perfect-scrollbar.css" rel="stylesheet">
+    <link href="assets/css/rickshaw.min.css" rel="stylesheet">
+    <link href="assets/css/select2.min.css" rel="stylesheet">
+
+    <!-- Starlight CSS -->
+    <link rel="stylesheet" href="assets/css/starlight.css">
+    <title>Title</title>
+</head>
+<body>
+<div class="row row-sm mg-t-20">
+    <div class="col-xl-8">
+        <div class="card overflow-hidden pd-20 pd-sm-25">
+            <h6 class="card-body-title">Basic Table</h6>
+            <p class="mg-b-20 mg-sm-b-30">所有用户</p>
+
+            <div class="table-responsive">
+                <table class="table table-hover mg-b-0">
+                    <thead class="bg-info">
+                    <tr>
+                        <th>ID</th>
+                        <th>名称</th>
+                        <th>性别</th>
+                        <th>身份</th>
+                        <th>注册时间</th>
+                        <th>邮箱</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="user">
+                    </tbody>
+                </table>
+            </div>
+
+        </div><!-- card -->
+
+    </div><!-- col-8 -->
+</div><!-- row -->
+
+<script src="assets/js/jquery.js"></script>
+<script src="assets/js/popper.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/jquery-ui.js"></script>
+<script src="assets/js/perfect-scrollbar.jquery.js"></script>
+<script src="assets/js/jquery.sparkline.min.js"></script>
+<script src="assets/js/d3.js"></script>
+<script src="assets/js/rickshaw.min.js"></script>
+<script src="assets/js/chart.js"></script>
+<script src="assets/js/jquery.flot.js"></script>
+<script src="assets/js/jquery.flot.pie.js"></script>
+<script src="assets/js/jquery.flot.resize.js"></script>
+<script src="assets/js/jquery.flot.spline.js"></script>
+
+<script src="assets/js/starlight.js"></script>
+<script src="assets/js/resizesensor.js"></script>
+<script src="assets/js/dashboard.js"></script>
+<script src="assets/js/select2.min.js"></script>
+<script>
+    $(function () {
+        'use strict';
+        $('.select2').select2({
+            minimumResultsForSearch: Infinity
+        });
+    })
+</script>
+<!-- blog -->
+<script>
+    /*!
+ * 表格的操作
+ */
+    $(document).ready(function () {
+        function get_users() {
+            $.ajax({
+                type: "get",
+                url: "http://localhost/blog/api/users",
+                dataType: "json",
+                success: function (data) {
+                    var count, i;
+                    count = data.users.length;
+                    $("#user").text('');
+                    for (i = 0; i < count; i++) {
+                        $("#user").append('<tr>\n' +
+                            '                                <td class="u-id">' + data.users[i].id + '</td>\n' +
+                            '                                <td class="u-name">' + data.users[i].name + '</td>\n' +
+                            '                                <td class="u-sex">' + data.users[i].sex + '</td>\n' +
+                            '                                <td class="u-role">' + data.users[i].role + '</td>\n' +
+                            '                                <td class="u-date">' + data.users[i].date + '</td>\n' +
+                            '                                <td class="u-email">' + data.users[i].email + '</td>\n' +
+                            '                                <td><div class="btn-group" role="group" aria-label="Basic example">' +
+                            '<button type="button" class="btn btn-secondary pd-x-25 u-view"><i class=\'icon ion-clipboard\'></i></button>' +
+                            '<button type="button" class="btn btn-secondary pd-x-25 u-edit"><i class=\'icon ion-edit\'></i></button>' +
+                            '<button type="button" class="btn btn-secondary pd-x-25 u-delete"><i class=\'icon ion-trash-a\'></i></button>' +
+                            '</div></td>\n' +
+                            '                            </tr>');
+                    }
+                },
+                error: function (xhr) {
+                    console.log("error:" + xhr.status + xhr.statusText);
+                }
+            });
+        }
+
+        get_users();
+
+        $("#user").on("click", ".u-view", function () {
+            alert(this.innerHTML);
+        });
+    });
+
+</script>
+</body>
+</html>

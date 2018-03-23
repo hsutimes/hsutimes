@@ -1,0 +1,12 @@
+# 开启 rewrite 功能
+Options +FollowSymlinks
+RewriteEngine on
+
+# 重写规则
+RewriteRule ^/$                 index.html [nc,qsa]
+RewriteRule ^login$             signin.html [nc,qsa]
+RewriteRule ^users$             api/user_info.php [nc,qsa]
+RewriteRule ^users/$            api/user_info.php [nc,qsa]
+RewriteRule ^u/assets/(.*)$     assets/$1
+RewriteRule ^u/(.*)$            user.html
+#RewriteRule ^u/(.*)$            api/user.php?name=$1
